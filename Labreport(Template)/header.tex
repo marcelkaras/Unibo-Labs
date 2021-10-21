@@ -1,32 +1,5 @@
 \documentclass[aps,prb,twocolumn,superscriptaddress,floatfix,longbibliography]{revtex4-2}
 
-\usepackage{amsmath,amssymb} % math symbols
-\usepackage{bm} % bold math font
-\usepackage{graphicx} % for figures
-\usepackage{comment} % allows block comments
-\usepackage{textcomp} % This package is just to give the text quote '
-%\usepackage{ulem} % allows strikeout text, e.g. \sout{text}
-
-\usepackage{enumitem}
-\setlist{noitemsep,leftmargin=*,topsep=0pt,parsep=0pt}
-
-\usepackage{xcolor} % \textcolor{red}{text} will be red for notes
-\definecolor{lightgray}{gray}{0.6}
-\definecolor{medgray}{gray}{0.4}
-
-\usepackage{hyperref}
-\hypersetup{
-colorlinks=true,
-urlcolor= blue,
-citecolor=blue,
-linkcolor= blue,
-% bookmarks=true,
-% bookmarksopen=false,
-}
-
-%%added packeages for math
-% Farben - optional
-\usepackage{xcolor}
 
 % Paket float verbessern
 \usepackage{scrhack}
@@ -43,7 +16,21 @@ linkcolor= blue,
 \usepackage{mathtools}
 % braket-Notation
 \usepackage{braket}
+
+
 \usepackage[autostyle]{csquotes}
+
+\usepackage{bm} % bold math font
+\usepackage{comment} % allows block comments
+\usepackage{textcomp} % This package is just to give the text quote '
+%\usepackage{ulem} % allows strikeout text, e.g. \sout{text}
+
+\usepackage{enumitem}
+\setlist{noitemsep,leftmargin=*,topsep=0pt,parsep=0pt}
+
+\usepackage{xcolor} % \textcolor{red}{text} will be red for notes
+\definecolor{lightgray}{gray}{0.6}
+\definecolor{medgray}{gray}{0.4}
 
 \usepackage[
   math-style=ISO,    % ┐
@@ -79,8 +66,6 @@ linkcolor= blue,
   text-greek=default, % ┘
 ]{mhchem}
 
-% richtige Anführungszeichen
-\usepackage[autostyle]{csquotes}
 
 % schöne Brüche im Text
 \usepackage{xfrac}
@@ -130,7 +115,14 @@ linkcolor= blue,
   pdfusetitle,    % Titel, Autoren und Datum als PDF-Attribute
   pdfcreator={},  % ┐ PDF-Attribute säubern
   pdfproducer={}, % ┘
+  colorlinks=true,
+  urlcolor= blue,
+  citecolor=blue,
+  linkcolor= blue,
+  % bookmarks=true,
+  % bookmarksopen=false,
 ]{hyperref}
+
 % erweiterte Bookmarks im PDF
 \usepackage{bookmark}
 
