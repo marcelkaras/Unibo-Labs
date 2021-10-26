@@ -5,7 +5,14 @@
   twocolumn=true, 
 ]{scrartcl}
 
-%\usepackage[twocolumn=true]{typearea}
+\usepackage[T1]{fontenc}
+% \usepackage[latin9]{inputenc}
+% \setcounter{secnumdepth}{0}
+
+\addtokomafont{title}{\raggedright}
+\addtokomafont{author}{\raggedright}
+\addtokomafont{date}{\raggedright}
+\addtokomafont{publishers}{\raggedright}
 
 % Paket float verbessern
 \usepackage{scrhack}
@@ -137,10 +144,10 @@
 % Trennung von Wörtern mit Strichen
 \usepackage[shortcuts]{extdash}
 
-\author{%
+\author{\vspace{-3cm}
  % AUTOR A\\%
- Marcel Karas\\
-  \href{mailto:marcel.karas@studio.unibo.it}{marcel.karas@studio.unibo.it}%
+ Marcel Karas
+  \(\href{mailto:marcel.karas@studio.unibo.it}{marcel.karas@studio.unibo.it} \)
   % \and%
   % AUTOR B\\%
   % \href{mailto:authorB@udo.edu}{authorB@udo.edu}%

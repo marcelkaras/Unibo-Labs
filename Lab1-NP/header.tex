@@ -1,4 +1,18 @@
-\documentclass[aps,prb,twocolumn,superscriptaddress,floatfix,longbibliography]{revtex4-2}
+\documentclass[
+  bibliography=totoc,     % Literatur im Inhaltsverzeichnis
+  captions=tableheading,  % Tabellenüberschriften
+ % titlepage=firstiscover, % Titelseite ist Deckblatt
+  twocolumn=true, 
+]{scrartcl}
+
+\usepackage[T1]{fontenc}
+% \usepackage[latin9]{inputenc}
+% \setcounter{secnumdepth}{0}
+
+\addtokomafont{title}{\raggedright}
+\addtokomafont{author}{\raggedright}
+\addtokomafont{date}{\raggedright}
+\addtokomafont{publishers}{\raggedright}
 
 % Paket float verbessern
 \usepackage{scrhack}
@@ -8,28 +22,26 @@
 
 % unverzichtbare Mathe-Befehle
 \usepackage{amsmath}
-
 % viele Mathe-Symbole
 \usepackage{amssymb}
 % Erweiterungen für amsmath
 \usepackage{mathtools}
-% braket-Notation
-\usepackage{braket}
 
+% Fonteinstellungen
+\usepackage{fontspec}
+% Latin Modern Fonts werden automatisch geladen
+% Alternativ zum Beispiel:
+%\setromanfont{Libertinus Serif}
+%\setsansfont{Libertinus Sans}
+%\setmonofont{Libertinus Mono}
 
-\usepackage[autostyle]{csquotes}
+% Wenn man andere Schriftarten gesetzt hat,
+% sollte man das Seiten-Layout neu berechnen lassen
+\recalctypearea{}
 
-\usepackage{bm} % bold math font
-\usepackage{comment} % allows block comments
-\usepackage{textcomp} % This package is just to give the text quote '
-%\usepackage{ulem} % allows strikeout text, e.g. \sout{text}
+% deutsche Spracheinstellungen
+%\usepackage[ngerman]{babel}
 
-\usepackage{enumitem}
-\setlist{noitemsep,leftmargin=*,topsep=0pt,parsep=0pt}
-
-\usepackage{xcolor} % \textcolor{red}{text} will be red for notes
-\definecolor{lightgray}{gray}{0.6}
-\definecolor{medgray}{gray}{0.4}
 
 \usepackage[
   math-style=ISO,    % ┐
@@ -54,7 +66,7 @@
 % Zahlen und Einheiten
 \usepackage[
   locale=DE,                   % deutsche Einstellungen
-  separate-uncertainty=true,   % immer Fehler mit \pm
+  separate-uncertainty=true,   % immer Unsicherheit mit \pm
   per-mode=symbol-or-fraction, % / in inline math, fraction in display math
 ]{siunitx}
 
@@ -65,7 +77,14 @@
   text-greek=default, % ┘
 ]{mhchem}
 
+% richtige Anführungszeichen
+\usepackage[autostyle]{csquotes}
+\usepackage{xpatch}
 
+\setkomafont{title}{\normalfont\bfseries}
+\makeatletter
+\xpatchcmd{\maketitle}{\titlefont\huge}{\titlefont\small}{}{}
+\makeatother
 % schöne Brüche im Text
 \usepackage{xfrac}
 
@@ -80,6 +99,9 @@
   below,   % unterhalb der Section aber auf der selben Seite ist ok
 ]{placeins}
 
+% Seite drehen für breite Tabellen: landscape Umgebung
+\usepackage{pdflscape}
+
 % Captions schöner machen.
 \usepackage[
   labelfont=bf,        % Tabelle x: Abbildung y: ist jetzt fett
@@ -91,8 +113,6 @@
 
 % Grafiken können eingebunden werden
 \usepackage{graphicx}
-% größere Variation von Dateinamen möglich
-\usepackage{grffile}
 
 % schöne Tabellen
 \usepackage{booktabs}
@@ -100,62 +120,36 @@
 % Verbesserungen am Schriftbild
 \usepackage{microtype}
 
-%% Literaturverzeichnis (documenttype does not allow using biber?)
-%\usepackage[
-%  backend=biber,
-%]{biblatex}
-%% Quellendatenbank
-%\addbibresource{lit.bib}
-%\addbibresource{programme.bib}
+% Literaturverzeichnis
+\usepackage[
+  backend=biber,
+]{biblatex}
+% Quellendatenbank
+\addbibresource{lit.bib}
+\addbibresource{programme.bib}
 
 % Hyperlinks im Dokument
 \usepackage[
+ % german,
   unicode,        % Unicode in PDF-Attributen erlauben
   pdfusetitle,    % Titel, Autoren und Datum als PDF-Attribute
   pdfcreator={},  % ┐ PDF-Attribute säubern
   pdfproducer={}, % ┘
-  colorlinks=true,
-  urlcolor= blue,
-  citecolor=blue,
-  linkcolor= blue,
-  % bookmarks=true,
-  % bookmarksopen=false,
 ]{hyperref}
-
 % erweiterte Bookmarks im PDF
 \usepackage{bookmark}
+
+\usepackage{abstract}
 
 % Trennung von Wörtern mit Strichen
 \usepackage[shortcuts]{extdash}
 
-\usepackage{cancel}
-
-\setlength{\parindent}{0em}
-
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-\newcommand{\pii}{\symup{\pi}}
-\newcommand{\Deltaa}{\symup{\Delta}}
-\newcommand{\dd}{\symup{d}}
-
-%%%%
-
-
-% Code to add paragraph numbers and titles
-\newif\ifptitle
-\newif\ifpnumber
-\newcounter{para}
-\newcommand\ptitle[1]{\par\refstepcounter{para}
-{\ifpnumber{\noindent\textcolor{lightgray}{\textbf{\thepara}}\indent}\fi}
-{\ifptitle{\textbf{[{#1}]}}\fi}}
-\ptitletrue  % comment this line to hide paragraph titles
-\pnumbertrue  % comment this line to hide paragraph numbers
-
-% minimum font size for figures
-\newcommand{\minfont}{6}
-
-% Uncomment this line if you prefer your vectors to appear as bold letters.
-% By default they will appear with arrows over them.
-% \renewcommand{\vec}[1]{\bm{#1}}
-
-% Allows to rewrite the same title in the supplement
-\newcommand{\mytitle}{Laboratory report:  \LaTeX}
+\author{\vspace{-3cm}
+ % AUTOR A\\%
+ Marcel Karas
+  \(\href{mailto:marcel.karas@studio.unibo.it}{marcel.karas@studio.unibo.it} \)
+  % \and%
+  % AUTOR B\\%
+  % \href{mailto:authorB@udo.edu}{authorB@udo.edu}%
+}
+\publishers{Universita di Bologna – Faculty of Physics}

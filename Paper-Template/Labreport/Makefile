@@ -7,7 +7,7 @@ build/plot.pdf: plot.py ../matplotlibrc ../header-matplotlib.tex | build
 	# and set the matplotlibrc
 	TEXINPUTS=$$(pwd)/..: MATPLOTLIBRC=../matplotlibrc python plot.py
 
-# hier weitere Abhängigkeiten für build/Labreport.pdf deklarieren:
+# hier weitere Abhängigkeiten für build/vXXX.pdf deklarieren:
 build/Labreport.pdf: build/plot.pdf
 
 build/Labreport.pdf: FORCE | build
