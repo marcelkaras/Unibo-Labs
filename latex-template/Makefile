@@ -1,7 +1,7 @@
 all:
-	make -C vXXX
+	make -C Labreport
 
 clean:
-	make -C vXXX clean
+	make -C Labreport clean
 
 .PHONY: all clean
