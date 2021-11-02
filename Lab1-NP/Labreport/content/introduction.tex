@@ -9,14 +9,14 @@
 \label{sec:Introduction}
 
 Luminescance is a phenomenon where a sample of any kind get energetically excited and thus emmits light of a material and structual specific spectrum.
-But also it is used in nowaday consumer tecnologies like TV screens. 
-In this case, photoluminescense is used to charactize the specifications three samples, which are semiconductor compunds of the same elemnts but in different concentrations.
-In the following, the samples as well as the process of photoluminescense is recalled.
+But also, it is used in nowaday consumer technologies like TV screens. 
+In this case, photoluminescense is used to charactize the specifications of three samples, which are semiconductor compunds of the same elements but in different concentrations.
+In the following, the samples as well as the process of photoluminescense are recalled.
 
 \subsection{Photoluminescense in Semiconductors}
 \label{sec:PLS}
 
-Semiconductors are characterized by a bandgap of $\SI{2}{\eV}$ to $\SI{4}{\eV}$, a almost completely fulled valence band and a almost completaly empty conductance band \cite[391]{festkorperphysik}.
+Semiconductors are characterized by a bandgap of $\SI{2}{\eV}$ to $\SI{4}{\eV}$, a almost completally fulled valence band and a almost completally empty conductance band \cite[391]{festkorperphysik}.
 Here, a lightsourse like a LED or Laser is able to excite some electrons from the valence band up into the cunductance band, as long as the photoenergy is bigger then the bandgap of the sample.
 The electrons loose energy by exciting lattice vibrations, and by reaching the minimum of the conductance band, they may recombine with a hole in the valence band, emmitting a photon with the energy of the band gap.
 Here, the equation
@@ -25,7 +25,7 @@ Here, the equation
 \end{equation}
 holds, where $\nu$ is the photons frequency, and $E_\text{g}$ the band gap.
 One easily can see, that the expected frequency of the emitted photons is smaller then the freqency of the pump. 
-Nethertheless, due to thermal effects a thermal spread along the energy of the bandgap, a widening of the spectrum around a $\lambda_\text{peak}$ is expected.
+Nethertheless, due to thermal effects a thermal spread along the energy of the bandgap, and thus a widening of the spectrum around a $\lambda_\text{peak}$ is expected.
 Using a spectrometer, this wavelengh can be found, and used to estimate the bandgap energy
 \begin{equation}
     E_{\text{g}} = \frac{h\c}{\lambda_\text{peak}}.
@@ -34,10 +34,64 @@ Using a spectrometer, this wavelengh can be found, and used to estimate the band
 \subsection{Samples}
 \label{sec:samples}
 
-There are three samples to analyze, where all of them can be described as quantum dots, as the $\ce{\Zn\S}$ has a bigger bandgap than the $\ce{\Cd\S_x\Se_{1-x}}$ molecule, thus it acts like a potential barrier.
-This provides a confinement potgential. The spectra of quantum dots are reffered in the chapter \ref{sec:QD}.
-Then, the molecules of $\ce{\Cd\S_x\Se_{1-x}/\Zn\S}$ with a unknown concentration $x$ are submered in tulene.
+There are three $\ce{CdS_x Se_{1-x}/ZnS}$ samples to analyze, where all of them can be described as quantum dots, as the $\ce{ZnS}$ has a bigger bandgap than the $\ce{CdS_xSe_{1-x}}$ molecule, 
+thus it acts like a potential barrier.
+This provides a confinement potential. The impact of quantum dots on the spectrum is reffered in the chapter \ref{sec:QD}.
+The molecules of $\ce{CdS_x Se_{1-x}/ZnS}$ with a unknown concentration $x$ are submerged in tulene.
+The relation between the concentration $x$ and the materials bandgap is mentioned in chapter \ref{sec:SemAll}.
 
-A other sample is methylammonium lead bromide ($\ce{\M\A\Pb\Br_3}$), a hybrid perovskite single crystal 
-\subsection{label:QD}
+A other sample is methylammonium lead bromide ($\ce{MAPbBr_3}$), a hybrid perovskite single crystal, which is a a material used in new approaches of optoelectronic devices.
 
+\subsection{Semiconductor alloys}
+\label{sec:SemAll}
+
+Under preserving the lattice structure of the crystal but subseducing one compuond of a semiconductor alloy, the bandgap and the lattice constant changes.
+The dependancy can be non-lineary, thus a bowing parameter $b$ is introduced. 
+The dependancy of the bandgap from the subsedution of $\ce{S}$ with $\ce{Se}$ in an alloy with $\ce{Cd}$, qunatified by the mentioned concentration (of $\ce{S}$) is given by
+\begin{align*}
+    E_g(\ce{Cd S_x Se_{1-x}}) &= x \times E_g(\ce{Cd S}) + (1-x) \\ &\times E_g(\ce{Cd Se}) - bx(1-x).
+\end{align*}
+
+\subsection{Quantum dot spectra}
+\label{sec:QD}
+
+A quantum dot is a one dimensional potential well, in which the solution of the Schrödinger equation for the electrons gives a descrete energy spectrum, comparable to the one of a single atom.
+The lowest aviable energy state depends on the size of the smallest dimension which here is given by the molecule size.
+In the undertaken photoluminescense measurement the emission primarily comes from a relaxation of the lowest energy electron in the conductance band to the highest energy state of the valence band, as explained in chapter \ref{sec:PLS}.
+Thus, the dimension of the quantum dot, determing the lowest energy state, is the parameter to set, in order to get the samples $\ce{S}$ concentation out of the spectral information.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=0.4\textwidth]{graphics/QD.png}
+  \caption[width=0.4\textwidth]{Structure of a spherical quantum dot and the potential well, created by the surrounding of a material with a bigger bandgap. The optical excitation energy depends not only on the samples band gap $E_g$, but also on the confinement energies due to the quantum dot dimensions\cite{instruction}.}
+  \label{fig:QD}
+\end{figure*}
+
+As seen in figure \ref{fig:QD}, the optical transition energy is given by
+\begin{equation}
+    h \nu = E_g + E_e + E_h,
+\end{equation}
+where $E_g$ is the fundamental bandgap of the material and $E_{e/h}$, the confinement energy for electrons/holes.
+Assuming a symetrical quantum dot with a radius $r$, and a linearly on the composition dependent effective mass of the electrons and holes
+\begin{align*}
+m_e^*(\ce{Cd S_x Se_{1-x}}) &= x m_e^*(\ce{Cd S}) \\ &+ (1-x)m_e^* (\ce{CdSe}) \\
+m_h^*(\ce{Cd S_x Se_{1-x}}) &= x m_h^*(\ce{Cd S}) \\ &+ (1-x)m_h^* (\ce{CdSe}),
+\end{align*}
+for the first confined state one gets
+\begin{equation}
+    h \nu = E_g + \frac{h^^2}{8er^^2}(\frac{1}{m_e^*} + \frac{1}{m_h^*}).
+\end{equation}
+
+\subsection{Experimental setup}
+\label{sec:setup}
+
+As a lightscourcde there are used a UV 395 LED as well as a 375nm LDH laser Diode.
+The Thorlabs CCS200 Spectrometer is connected with a fiber optic which can be positioned next to the sample. 
+In order to minimalize the noise of the exciting light source a perpendicular positioning to it is used.
+The Spectrometer usues a grating in order to project one wavelenght onto a CCD linear image sensor.
+The wavelenght intensity scan can be acquired by moving a mirror. This happens automatically, such that a wavelength-intensity-plot is aviable in the acquisition software.
+
+As there is expected to have noise from external light sources during the experiment, a background measurement for the LED setup is needed.
+This can be substracted from the signal later on.
+For the laser setup, a darkeing curtain is used. 
+To overcome statistical fluctuations, the integration time of the acqiisition is set to the highest possible level without satturation occuring.
