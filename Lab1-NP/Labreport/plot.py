@@ -14,6 +14,9 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
 def gaussian(x, a, b, c):
     return a*np.exp(-np.power(x - b, 2)/(2*np.power(c, 2)))
 
+#Definition of wavelength (nm) to E in (eV)
+def energyConv(x):
+    return 1240/x
 
 ###green LED plot 
 #wavelength in nm against intensity
@@ -61,8 +64,8 @@ ax.tick_params(which='major', direction='in', length=7, width=0.3)
 ax.tick_params(which='minor', direction='in', length=4, width=0.3)
 
 # in matplotlibrc leider (noch) nicht möglich
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('plots/LED-Green.pdf')
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('plots/LED-Green.pdf',bbox_inches = "tight")
  
 
 #-------------------------------------------------------------------------------------------------------------------
@@ -113,8 +116,8 @@ ax.tick_params(which='major', direction='in', length=7, width=0.3)
 ax.tick_params(which='minor', direction='in', length=4, width=0.3)
 
 # in matplotlibrc leider (noch) nicht möglich
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('plots/LED-Red.pdf')
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('plots/LED-Red.pdf',bbox_inches = "tight")
 
 #-------------------------------------------------------------------------------------------------------------------
 
@@ -164,8 +167,204 @@ ax.tick_params(which='major', direction='in', length=7, width=0.3)
 ax.tick_params(which='minor', direction='in', length=4, width=0.3)
 
 # in matplotlibrc leider (noch) nicht möglich
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('plots/LED-UV.pdf')
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('plots/LED-UV.pdf',bbox_inches = "tight")
+
+#------------------------------------------------------------------
+#Sample spectra with LED light
+#------------------------------------------------------------------
+
+#Sample A_D (Sample A with LED)
+
+###Sample A_D plot 
+#wavelength in nm against intensity
+a_A_D, i_A_D = np.genfromtxt("Data/sampleA-Copy.txt",delimiter=",",skip_header=5, unpack = True)
+print(a_A_D)
+print(i_A_D)
+
+#Gaußfit for green spectrum
+paramsA_D, covA_D = curve_fit(gaussian, a_A_D,i_A_D,p0=[1,470,1])
+errA_D = np.sqrt(np.diag(covA_D))
+
+#a-peak in eV instead of nm
+a_A_eV=energyConv(paramsA_D[1])
+
+print('\nSample_A-LED-Gauß:')
+print('a = ', paramsA_D[0], r'\pm', errA_D[0])
+print('b = ', paramsA_D[1], r'\pm', errA_D[1])
+print('b_eV = ', a_A_eV, r'\pm', errA_D[1])
+print('c = ', paramsA_D[2], r'\pm', errA_D[2])
+
+#Plot of Sample A LED spectrum
+
+#Value-range in a_A_D
+print("a_A_D.size")
+print(a_A_D.size)
+aa_A_D=np.linspace(a_A_D[0],a_A_D[a_A_D.size-1],1000)
+
+#plotten
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.13, 0.8, 0.83])
+# for axis in ['top','bottom','left','right']:
+#   ax.spines[axis].set_linewidth(0.3)
+
+# Plot und Labels/ Legende
+ax.plot(a_A_D, i_A_D, 'k-', label='Datapoints')
+ax.plot(aa_A_D, gaussian(aa_A_D, *paramsA_D), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
+ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
+ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
+leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1.get_frame().set_linewidth(0.3)
+
+# Einstellung der Achsen
+ax.set_xlim(a_A_D[0],a_A_D[a_A_D.size-1])
+ax.xaxis.set_minor_locator(AutoMinorLocator())
+ax.yaxis.set_minor_locator(AutoMinorLocator())
+ax.tick_params(axis='both', direction='in')
+ax.tick_params(which='major', direction='in', length=7, width=0.3)
+ax.tick_params(which='minor', direction='in', length=4, width=0.3)
+
+# in matplotlibrc leider (noch) nicht möglich
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('plots/Samp_A_D.pdf',bbox_inches = "tight")
+ 
+
+#-------------------------------------------------------------------------------------------------------------------
+
+#Sample B_D (Sample B with LED)
+
+###Sample B_D plot 
+#wavelength in nm against intensity
+a_B_D, i_B_D = np.genfromtxt("Data/sampleB-Copy.txt",delimiter=",",skip_header=0, unpack = True)
+print(a_B_D)
+print(i_B_D)
+
+#Gaußfit for green spectrum
+paramsB_D, covB_D = curve_fit(gaussian, a_B_D,i_B_D,p0=[1,550,1])
+errB_D = np.sqrt(np.diag(covB_D))
+
+#a-peak in eV instead of nm
+a_B_eV=energyConv(paramsB_D[1])
+
+print('\nSample_B-LED-Gauß:')
+print('a = ', paramsB_D[0], r'\pm', errB_D[0])
+print('b = ', paramsB_D[1], r'\pm', errB_D[1])
+print('b_eV = ', a_B_eV, r'\pm', errB_D[1])
+print('c = ', paramsB_D[2], r'\pm', errB_D[2])
+
+#Plot of Sample B LED spectrum
+
+#Value-range in a_B_D
+print("a_B_D.size")
+print(a_B_D.size)
+aa_B_D=np.linspace(a_B_D[0],a_B_D[a_B_D.size-1],1000)
+
+#plotten
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.13, 0.8, 0.83])
+# for axis in ['top','bottom','left','right']:
+#   ax.spines[axis].set_linewidth(0.3)
+
+# Plot und Labels/ Legende
+ax.plot(a_B_D, i_B_D, 'k-', label='Datapoints')
+ax.plot(aa_B_D, gaussian(aa_B_D, *paramsB_D), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
+ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
+ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
+leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1.get_frame().set_linewidth(0.3)
+
+# Einstellung der Achsen
+ax.set_xlim(a_B_D[0],a_B_D[a_B_D.size-1])
+ax.xaxis.set_minor_locator(AutoMinorLocator())
+ax.yaxis.set_minor_locator(AutoMinorLocator())
+ax.tick_params(axis='both', direction='in')
+ax.tick_params(which='major', direction='in', length=7, width=0.3)
+ax.tick_params(which='minor', direction='in', length=4, width=0.3)
+
+# in matplotlibrc leider (noch) nicht möglich
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('plots/Samp_B_D.pdf',bbox_inches = "tight")
+ 
+
+#-------------------------------------------------------------------------------------------------------------------
+#Sample C_D (Sample C with LED)
+
+###Sample C_D plot 
+#wavelength in nm against intensity
+a_C_D, i_C_D = np.genfromtxt("Data/sampleC-Copy.txt",delimiter=",",skip_header=0, unpack = True)
+print(a_C_D)
+print(i_C_D)
+
+#Gaußfit for green spectrum
+paramsC_D, covC_D = curve_fit(gaussian, a_C_D,i_C_D,p0=[1,670,1])
+errC_D = np.sqrt(np.diag(covC_D))
+
+#a-peak in eV instead of nm
+a_C_eV=energyConv(paramsC_D[1])
+
+print('\nSample_C-LED-Gauß:')
+print('a = ', paramsC_D[0], r'\pm', errC_D[0])
+print('b = ', paramsC_D[1], r'\pm', errC_D[1])
+print('b_eV = ', a_C_eV, r'\pm', errC_D[1])
+print('c = ', paramsC_D[2], r'\pm', errC_D[2])
+
+#Plot of Sample C LED spectrum
+
+#Value-range in a_C_D
+print("a_C_D.size")
+print(a_C_D.size)
+aa_C_D=np.linspace(a_C_D[0],a_C_D[a_C_D.size-1],1000)
+
+#plotten
+
+fig = plt.figure()
+ax = fig.add_axes([0.1, 0.13, 0.8, 0.83])
+# for axis in ['top','bottom','left','right']:
+#   ax.spines[axis].set_linewidth(0.3)
+
+# Plot und Labels/ Legende
+ax.plot(a_C_D, i_C_D, 'k-', label='Datapoints')
+ax.plot(aa_C_D, gaussian(aa_C_D, *paramsC_D), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $C(z) = az^4 + bz^3 + cz^2 + dz + e$')
+ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
+ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
+leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1.get_frame().set_linewidth(0.3)
+
+# Einstellung der Achsen
+ax.set_xlim(a_C_D[0],a_C_D[a_C_D.size-1])
+ax.xaxis.set_minor_locator(AutoMinorLocator())
+ax.yaxis.set_minor_locator(AutoMinorLocator())
+ax.tick_params(axis='both', direction='in')
+ax.tick_params(which='major', direction='in', length=7, width=0.3)
+ax.tick_params(which='minor', direction='in', length=4, width=0.3)
+
+# in matplotlibrc leider (noch) nicht möglich
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('plots/Samp_C_D.pdf',bbox_inches = "tight")
+ 
+
+#-------------------------------------------------------------------------------------------------------------------
+#finding the concentracion x
+
+#defining parameters
+b=0.24
+E_g_CdSe = 1.74 #eV
+E_g_CdS  = 2.45 #eV
+E_g_ZnS  = 3.45 #eV
+
+m_e_CdSe = 0.13
+m_e_CdS  = 0.21
+
+m_h_CdSe = 0.45
+m_h_CdS  = 0.8
+
+#a_A_eV sind die photonenenergien hv in eV
+
+#defining the function
+def photon(x)
+return x * E_g_CdS + (1-x) * E_g_CdSe - b * x * (1-x) + np.cons(h)
 
 
 
@@ -190,32 +389,3 @@ plt.savefig('plots/LED-UV.pdf')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-# x = np.linspace(0, 10, 1000)
-# y = x ** np.sin(x)
-
-# plt.subplot(1, 2, 1)
-# plt.plot(x, y, label='Kurve')
-# plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
-# plt.ylabel(r'$y \mathbin{/} \unit{\micro\joule}$')
-# plt.legend(loc='best')
-
-# plt.subplot(1, 2, 2)
-# plt.plot(x, y, label='Kurve')
-# plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
-# plt.ylabel(r'$y \mathbin{/} \unit{\micro\joule}$')
-# plt.legend(loc='best')
-
-# # in matplotlibrc leider (noch) nicht möglich
-# plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-# plt.savefig('build/plot.pdf')

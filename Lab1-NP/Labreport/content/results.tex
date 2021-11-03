@@ -11,28 +11,51 @@ Therefore some characterizations of the used lightsources are done, as well of o
 
 \subsection{LED emission spectra}
 \label{sec:LED}
-
-\begin{wrapfigure}{l}{\linewidth}
-    \includegraphics[width=0.5\textwidth]{plots/LED-Green.pdf}
-    \caption{Spectral measurement of a green LED lightsourse. A Gaussian fit is implemented.}
+\begin{figure*}
+    \centering
+\begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{plots/LED-Green.pdf}
+    \caption{Green LED lightsourse}
     \label{fig:LEDG}
-\end{wrapfigure}
-\begin{wrapfigure}{r}{\linewidth}
-    \includegraphics[width=0.5\textwidth]{plots/LED-Red.pdf}
-    \caption{Spectral measurement of a red LED lightsourse. A Gaussian fit is implemented.}
+\end{subfigure}
+\begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{plots/LED-Red.pdf}
+    \caption{Red LED lightsourse}
     \label{fig:LEDR}
-\end{wrapfigure}
-\begin{wrapfigure}{r}{\linewidth}
-    \includegraphics[width=0.5\textwidth]{plots/LED-UV.pdf}
-    \caption{Spectral measurement of a UV LED lightsourse. A Gaussian fit is implemented.}
+\end{subfigure}
+\begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{plots/LED-UV.pdf}
+  \caption{UV LED lightsourse}
     \label{fig:LEDUV}
-\end{wrapfigure}
-    
+\end{subfigure}
+\caption{Spectral measurement of different LED lightsourse. A Gaussian fit is implemented around the emmision peak.}
+\end{figure*}
+% \begin{figure}
+%     \captionsetup{width=0.9\linewidth}
+%     \includegraphics[width=0.5\textwidth]{plots/LED-Green.pdf}
+%     \caption{Spectral measurement of a green LED lightsourse. A Gaussian fit is implemented.}
+%     \label{fig:LEDG}
+% \end{figure}
+% \begin{figure}
+%     \captionsetup{width=0.9\linewidth}
+%     \includegraphics[width=0.5\textwidth]{plots/LED-Red.pdf}
+%     \caption{Spectral measurement of a red LED lightsourse. A Gaussian fit is implemented.}
+%     \label{fig:LEDR}
+% \end{figure}
+% \begin{figure}
+%     \captionsetup{width=0.9\linewidth}
+%     \includegraphics[width=0.5\textwidth]{plots/LED-UV.pdf}
+%   \caption{Spectral measurement of a UV LED lightsourse. A Gaussian fit is implemented.}
+%     \label{fig:LEDUV}
+% \end{figure}
 
 In figure \ref{fig:LEDG},\ref{fig:LEDR},\ref{fig:LEDUV} there are the spectra of a green, red and UV-LED, where a gaussian fit of the form 
 \begin{equation}
     f(x,a,b,c) = a \times \exp{-\frac{(x-b^^2)}{2 c^^2}}
-\end{equation}
+\end{equation}\label{eq:gauss}
 has been introduced. Clearly a $\lambda_\text{peak}$ 
 \begin{align*}
     \lambda_\text{peak,green} &= \SI{569.2 \pm 0.2}{\nano\meter} \\
@@ -40,4 +63,66 @@ has been introduced. Clearly a $\lambda_\text{peak}$
     \lambda_\text{peak,UV} &= \SI{391.5 \pm 0.1}{\nano\meter} \\
 \end{align*}
 can be found.
-391.4587161187917 \pm 0.09290554731308
+
+\subsection{Sample Spectra by UV-LED excitation}
+\label{sec:samp_LED}
+
+In the following the resulting spectra of the three unknown samples are presented, where the optical excitation is done by a UV-LED operated at a voltage of $\SI{2.98}{\volt}$.
+The acquired data are averaged over 10 measurement cycles, and the integration time is $\SI{200}{\nano\second}$.
+Also a background correction has been done, where a spectrum, aquired without the sample is substracted from the luminescense sepctrum.
+The peak of the probe is still visible, as there is a scattering in the sample holder occuring.
+By comparing the peaks in intensity but also in wavelength it becomes clear that the probe is the more energetic, small wavelength and less intense one.
+
+
+A gaussian fit \ref{eq:gauss} has been done for all three spectra, in order to obtain the peak wavelength of luminescence, as well as the spectral broadening, which corresponds to the variance, namely the parameter c of the fit.
+
+\begin{figure}
+    \captionsetup{width=0.9\linewidth}
+    \includegraphics[width=0.5\textwidth]{plots/Samp_A_D.pdf}
+  \caption{Spectral measurement of sample A, excited by a UV-LED lightsource. A Gaussian fit of the peak contributed by luminescense is implemented.}
+    \label{fig:Samp_A_D}
+\end{figure}
+
+\begin{figure}
+    \captionsetup{width=0.9\linewidth}
+    \includegraphics[width=0.5\textwidth]{plots/Samp_B_D.pdf}
+  \caption{Spectral measurement of sample B, excited by a UV-LED lightsource. A Gaussian fit of the peak contributed by luminescense is implemented.}
+    \label{fig:Samp_B_D}
+\end{figure}
+
+\begin{figure}
+    \captionsetup{width=0.9\linewidth}
+    \includegraphics[width=0.5\textwidth]{plots/Samp_C_D.pdf}
+  \caption{Spectral measurement of sample C, excited by a UV-LED lightsource. A Gaussian fit of the peak contributed by luminescense is implemented.}
+    \label{fig:Samp_B_D}
+\end{figure}
+
+The resulting peak wavelengths $\lambda_\text{peak}$ and spectral widening $\sigma$ are
+
+\begin{align*}
+    \lambda_\text{peak,A} &= \SI{563.9 \pm 0.2}{\nano\meter} \\
+    \sigma_\text{A} &= \SI{16.7 \pm 0.2}{\nano\meter} \\
+    \lambda_\text{peak,B} &= \SI{553.33 \pm 0.03}{\nano\meter} \\
+    \sigma_\text{B} &= \SI{13.93 \pm 0.03}{\nano\meter} \\
+    \lambda_\text{peak,C} &= \SI{672.6 \pm 0.5}{\nano\meter} \\
+    \sigma_\text{C} &= \SI{14.5 \pm 0.5}{\nano\meter}. \\
+\end{align*}
+
+The wavelength is derectly referred to the energy of the photon by equation \ref{eq:h}, which are 
+\begin{align*}
+    E_\text{A} &= \SI{2.67}{\eV} \\
+    E_\text{B} &= \SI{2.24}{\eV} \\
+    E_\text{C} &= \SI{1.84}{\eV}. \\
+\end{align*}
+
+Now, by assuming a diameter of $\SI{6}{\nano\meter}$ for the nanoparticles astimation of the nanoparticles is done.
+There to equations \ref{eq:QD} and \ref{eq:E-G} are plugged into each other and solved for the concentration $x$, with the parapeters
+\begin{align*}
+    b          &= \SI{0.24}{\eV}\\
+    E_g(CdS)   &= \SI{2.45}{\eV}\\
+    E_g(CdSe)  &= \SI{1.74}{\eV}\\
+    m^*_e(CdS) &= \SI{0.21}{\eV}\\
+    m^*_e(CdSe)&= \SI{0.13}{\eV}\\
+    m^*_h(CdS) &= \SI{0.8}{\eV}\\
+    m^*_h(CdS) &= \SI{0.45}{\eV}\\
+\end{align*}
