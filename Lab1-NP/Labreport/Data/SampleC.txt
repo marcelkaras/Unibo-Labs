@@ -4,7 +4,6 @@ laser operation power 8 mW continuous
 wavelength nm vs intensity
 
 
-
 1.973276062e+02,3.275559517e-03
 1.975324097e+02,-1.070572529e-03
 1.977372437e+02,4.778163042e-03
