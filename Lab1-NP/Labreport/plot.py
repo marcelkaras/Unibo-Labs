@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import uncertainties.unumpy as unp
-import scipy.constants as con
+import scipy.constants as const
 import scipy.optimize as opt
 from scipy.optimize import curve_fit
 from scipy import stats
@@ -179,15 +179,14 @@ plt.savefig('plots/LED-UV.pdf',bbox_inches = "tight")
 ###Sample A_D plot 
 #wavelength in nm against intensity
 a_A_D, i_A_D = np.genfromtxt("Data/sampleA-Copy.txt",delimiter=",",skip_header=5, unpack = True)
-print(a_A_D)
-print(i_A_D)
 
 #Gaußfit for green spectrum
 paramsA_D, covA_D = curve_fit(gaussian, a_A_D,i_A_D,p0=[1,470,1])
 errA_D = np.sqrt(np.diag(covA_D))
 
 #a-peak in eV instead of nm
-a_A_eV=energyConv(paramsA_D[1])
+a_A_eV=energyConv(paramsA_D[1]) ######### HIER funktioniert es (ohne ufloat) bei der Berechnung von x in Zeile 367
+#a_A_eV=ufloat(energyConv(paramsA_D[1]),energyConv(errA_D[1])) ##und hier nicht mehr
 
 print('\nSample_A-LED-Gauß:')
 print('a = ', paramsA_D[0], r'\pm', errA_D[0])
@@ -237,15 +236,14 @@ plt.savefig('plots/Samp_A_D.pdf',bbox_inches = "tight")
 ###Sample B_D plot 
 #wavelength in nm against intensity
 a_B_D, i_B_D = np.genfromtxt("Data/sampleB-Copy.txt",delimiter=",",skip_header=0, unpack = True)
-print(a_B_D)
-print(i_B_D)
 
 #Gaußfit for green spectrum
 paramsB_D, covB_D = curve_fit(gaussian, a_B_D,i_B_D,p0=[1,550,1])
 errB_D = np.sqrt(np.diag(covB_D))
 
 #a-peak in eV instead of nm
-a_B_eV=energyConv(paramsB_D[1])
+# a_B_eV=energyConv(paramsB_D[1])
+a_B_eV=ufloat(energyConv(paramsB_D[1]),errB_D[1])
 
 print('\nSample_B-LED-Gauß:')
 print('a = ', paramsB_D[0], r'\pm', errB_D[0])
@@ -294,15 +292,14 @@ plt.savefig('plots/Samp_B_D.pdf',bbox_inches = "tight")
 ###Sample C_D plot 
 #wavelength in nm against intensity
 a_C_D, i_C_D = np.genfromtxt("Data/sampleC-Copy.txt",delimiter=",",skip_header=0, unpack = True)
-print(a_C_D)
-print(i_C_D)
 
 #Gaußfit for green spectrum
 paramsC_D, covC_D = curve_fit(gaussian, a_C_D,i_C_D,p0=[1,670,1])
 errC_D = np.sqrt(np.diag(covC_D))
 
 #a-peak in eV instead of nm
-a_C_eV=energyConv(paramsC_D[1])
+# a_C_eV=energyConv(paramsC_D[1])
+a_C_eV=ufloat(energyConv(paramsC_D[1]),errC_D[1])
 
 print('\nSample_C-LED-Gauß:')
 print('a = ', paramsC_D[0], r'\pm', errC_D[0])
@@ -350,6 +347,7 @@ plt.savefig('plots/Samp_C_D.pdf',bbox_inches = "tight")
 
 #defining parameters
 b=0.24
+r = 6e-9 #nm
 E_g_CdSe = 1.74 #eV
 E_g_CdS  = 2.45 #eV
 E_g_ZnS  = 3.45 #eV
@@ -363,9 +361,21 @@ m_h_CdS  = 0.8
 #a_A_eV sind die photonenenergien hv in eV
 
 #defining the function
-def photon(x)
-return x * E_g_CdS + (1-x) * E_g_CdSe - b * x * (1-x) + np.cons(h)
+def photonE(x,E_photon):
+    return x * E_g_CdS + (1-x) * E_g_CdSe - b * x * (1-x) + const.h**2/(8 * const.e * r**2)*(1/( x * m_e_CdS + (1-x) * m_e_CdSe )+1/(x * m_h_CdS + (1-x) * m_h_CdSe)) -E_photon
 
+solA = opt.fsolve(photonE,0.5,args=a_A_eV)
+#solA = opt.fmin_slsqp(photonE,0.5,args=a_A_eV)
+print('Solutions for x')
+print('Sample A concentration',solA)
+
+solB = opt.fmin_slsqp(photonE,0.5,args=a_B_eV)
+print('Sample B concentration',solB)
+
+solC = opt.fmin_slsqp(photonE,0.5,args=a_C_eV)
+print('Sample C concentration',solC)
+print('h :', const.h)
+print('e :',const.e)
 
 
 
