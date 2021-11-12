@@ -185,13 +185,14 @@ paramsA_D, covA_D = curve_fit(gaussian, a_A_D,i_A_D,p0=[1,470,1])
 errA_D = np.sqrt(np.diag(covA_D))
 
 #a-peak in eV instead of nm
-a_A_eV=energyConv(paramsA_D[1]) ######### HIER funktioniert es (ohne ufloat) bei der Berechnung von x in Zeile 367
-#a_A_eV=ufloat(energyConv(paramsA_D[1]),energyConv(errA_D[1])) ##und hier nicht mehr
+a_A_eV=ufloat(paramsA_D[1],errA_D[1])
+a_A_eV=energyConv(a_A_eV)
+
 
 print('\nSample_A-LED-Gauß:')
 print('a = ', paramsA_D[0], r'\pm', errA_D[0])
 print('b = ', paramsA_D[1], r'\pm', errA_D[1])
-print('b_eV = ', a_A_eV, r'\pm', errA_D[1])
+print('b_eV = ', a_A_eV)
 print('c = ', paramsA_D[2], r'\pm', errA_D[2])
 
 #Plot of Sample A LED spectrum
@@ -242,13 +243,14 @@ paramsB_D, covB_D = curve_fit(gaussian, a_B_D,i_B_D,p0=[1,550,1])
 errB_D = np.sqrt(np.diag(covB_D))
 
 #a-peak in eV instead of nm
-a_B_eV=energyConv(paramsB_D[1])
-#a_B_eV=ufloat(energyConv(paramsB_D[1]),errB_D[1])
+a_B_eV=ufloat(paramsB_D[1],errB_D[1])
+a_B_eV=energyConv(a_B_eV)
+
 
 print('\nSample_B-LED-Gauß:')
 print('a = ', paramsB_D[0], r'\pm', errB_D[0])
 print('b = ', paramsB_D[1], r'\pm', errB_D[1])
-print('b_eV = ', a_B_eV, r'\pm', errB_D[1])
+print('b_eV = ', a_B_eV)
 print('c = ', paramsB_D[2], r'\pm', errB_D[2])
 
 #Plot of Sample B LED spectrum
@@ -298,13 +300,13 @@ paramsC_D, covC_D = curve_fit(gaussian, a_C_D,i_C_D,p0=[1,670,1])
 errC_D = np.sqrt(np.diag(covC_D))
 
 #a-peak in eV instead of nm
-a_C_eV=energyConv(paramsC_D[1])
-#a_C_eV=ufloat(energyConv(paramsC_D[1]),errC_D[1])
+a_C_eV=ufloat(paramsC_D[1],errC_D[1])
+a_C_eV=energyConv(a_C_eV)
 
 print('\nSample_C-LED-Gauß:')
 print('a = ', paramsC_D[0], r'\pm', errC_D[0])
 print('b = ', paramsC_D[1], r'\pm', errC_D[1])
-print('b_eV = ', a_C_eV, r'\pm', errC_D[1])
+print('b_eV = ', a_C_eV)
 print('c = ', paramsC_D[2], r'\pm', errC_D[2])
 
 #Plot of Sample C LED spectrum
@@ -364,15 +366,15 @@ m_h_CdS  = 0.8
 def photonE(x,E_photon):
     return x * E_g_CdS + (1-x) * E_g_CdSe - b * x * (1-x) + const.h**2/(8 * const.e * r**2)*(1/( x * m_e_CdS + (1-x) * m_e_CdSe )+1/(x * m_h_CdS + (1-x) * m_h_CdSe)) -E_photon
 
-solA = opt.fsolve(photonE,0.5,args=a_A_eV)
+solA = opt.fsolve(photonE,0.5,args=a_A_eV.n)
 #solA = opt.fmin_slsqp(photonE,0.5,args=a_A_eV)
 print('Solutions for x')
 print('Sample A concentration',solA)
 
-solB = opt.fsolve(photonE,0.5,args=a_B_eV)
+solB = opt.fsolve(photonE,0.5,args=a_B_eV.n)
 print('Sample B concentration',solB)
 
-solC = opt.fsolve(photonE,0.5,args=a_C_eV)
+solC = opt.fsolve(photonE,0.5,args=a_C_eV.n)
 print('Sample C concentration',solC)
 print('h :', const.h)
 print('e :',const.e)
@@ -412,13 +414,17 @@ paramsA_D, covA_D = curve_fit(gaussian, a_A_D,i_A_D,p0=[1,470,1])
 errA_D = np.sqrt(np.diag(covA_D))
 
 #a-peak in eV instead of nm
-a_A_eV_L=energyConv(paramsA_D[1]) ######### HIER funktioniert es (ohne ufloat) bei der Berechnung von x in Zeile 367
+# a_A_eV_L=energyConv(paramsA_D[1]) 
+a_A_eV_L=ufloat(paramsA_D[1],errA_D[1])
+a_A_eV_L=energyConv(a_A_eV_L)
+
+######### HIER funktioniert es (ohne ufloat) bei der Berechnung von x in Zeile 367
 #a_A_eV=ufloat(energyConv(paramsA_D[1]),energyConv(errA_D[1])) ##und hier nicht mehr
 
 print('\nSample_A-UV-Gauß:')
 print('a = ', paramsA_D[0], r'\pm', errA_D[0])
 print('b = ', paramsA_D[1], r'\pm', errA_D[1])
-print('b_eV = ', a_A_eV_L, r'\pm', energyConv(errA_D[1]))
+print('b_eV = ', a_A_eV_L)
 print('c = ', paramsA_D[2], r'\pm', errA_D[2])
 
 #Plot of Sample A UV spectrum
@@ -469,13 +475,14 @@ paramsB_D, covB_D = curve_fit(gaussian, a_B_D,i_B_D,p0=[1,550,1])
 errB_D = np.sqrt(np.diag(covB_D))
 
 #a-peak in eV instead of nm
-a_B_eV_L=energyConv(paramsB_D[1])
-#a_B_eV=ufloat(energyConv(paramsB_D[1]),energyConv(errB_D[1]))
+a_B_eV_L=ufloat(paramsB_D[1],errB_D[1])
+a_B_eV_L=energyConv(a_B_eV_L)
+
 
 print('\nSample_B-UV-Gauß:')
 print('a = ', paramsB_D[0], r'\pm', errB_D[0])
 print('b = ', paramsB_D[1], r'\pm', errB_D[1])
-print('b_eV = ', a_B_eV_L, r'\pm', energyConv(errB_D[1]))
+print('b_eV = ', a_B_eV_L)
 print('c = ', paramsB_D[2], r'\pm', errB_D[2])
 
 #Plot of Sample B UV spectrum
@@ -525,13 +532,13 @@ paramsC_D, covC_D = curve_fit(gaussian, a_C_D,i_C_D,p0=[1,670,1])
 errC_D = np.sqrt(np.diag(covC_D))
 
 #a-peak in eV instead of nm
-a_C_eV_L=energyConv(paramsC_D[1])
-#a_C_eV=ufloat(energyConv(paramsC_D[1]),energyConv(errC_D[1]))
+a_C_eV_L=ufloat(paramsC_D[1],errC_D[1])
+a_C_eV_L=energyConv(a_C_eV_L)
 
 print('\nSample_C-UV-Gauß:')
 print('a = ', paramsC_D[0], r'\pm', errC_D[0])
 print('b = ', paramsC_D[1], r'\pm', errC_D[1])
-print('b_eV = ', a_C_eV_L, r'\pm', energyConv(errC_D[1]))
+print('b_eV = ', a_C_eV_L)
 print('c = ', paramsC_D[2], r'\pm', errC_D[2])
 
 #Plot of Sample C UV spectrum
@@ -591,15 +598,15 @@ m_h_CdS  = 0.8
 def photonE(x,E_photon):
     return x * E_g_CdS + (1-x) * E_g_CdSe - b * x * (1-x) + const.h**2/(8 * const.e * r**2)*(1/( x * m_e_CdS + (1-x) * m_e_CdSe )+1/(x * m_h_CdS + (1-x) * m_h_CdSe)) -E_photon
 
-solA = opt.fsolve(photonE,0.5,args=a_A_eV_L)
+solA = opt.fsolve(photonE,0.5,args=a_A_eV_L.n)
 #solA = opt.fmin_slsqp(photonE,0.5,args=a_A_eV)
 print('Solutions for x')
 print('Sample A concentration',solA)
 
-solB = opt.fsolve(photonE,0.5,args=a_B_eV_L)
+solB = opt.fsolve(photonE,0.5,args=a_B_eV_L.n)
 print('Sample B concentration',solB)
 
-solC = opt.fsolve(photonE,0.5,args=a_C_eV_L)
+solC = opt.fsolve(photonE,0.5,args=a_C_eV_L.n)
 print('Sample C concentration',solC)
 
 
@@ -622,11 +629,14 @@ errP = np.sqrt(np.diag(covP))
 #a-peak in eV instead of nm
 a_P_eV=energyConv(paramsP[1]) ######### HIER funktioniert es (ohne ufloat) bei der Berechnung von x in Zeile 367
 #a_P_eV=ufloat(energyConv(paramsP[1]),energyConv(errP[1])) ##und hier nicht mehr
+a_P_eV=ufloat(paramsP[1],errP[1])
+a_P_eV=energyConv(a_P_eV)
+
 
 print('\nSample_P_UV-Gauß:')
 print('a = ', paramsP[0], r'\pm', errP[0])
 print('b = ', paramsP[1], r'\pm', errP[1])
-print('b_eV = ', a_P_eV, r'\pm', energyConv(errP[1]))
+print('b_eV = ', a_P_eV)
 print('c = ', paramsP[2], r'\pm', errP[2])
 
 #Plot of Sample P UV spectrum
