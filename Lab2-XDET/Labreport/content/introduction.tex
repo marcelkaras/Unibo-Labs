@@ -18,4 +18,26 @@
 \section{Introduction}
 \label{sec:Introduction}
 
+X-ray fluorescence is the emission of secondary, element characteristic x-rays due to an exctation by high-energy X- or gammarays.
+So, by comparing the fluorescence spectrum of an unknown sample with the spectra of known ones, the specimen can be easily identified.
+Further, by X-ray diffraction the christallography can be analyzed, as the diffraction pattern depends on the lattice parameters.
+In more detail, the scattering potential, and thus the electons density of the threedimensional sample has an characteristic diffraction pattern.
+From this, the atoms positions, the chemical bonds and also christallographic disorders can be determined.
 
+\subsection{Experimental setup}
+\label{sec:setup}
+
+For the fluorescence measurement as a high-energy X-ray source $\ce{^{133}Ba}$ is used. 
+The sample (Sample B) is positioned in a sample holder between the source and a $\ce{Si}$ detector.
+This is connected with a multichannelanalyzer and then with a PC.
+It is important to notice that the X-ray source is $\ce{^{133}Ba}$ and thus decays into $\ce{Cs}$ by electron capture.
+Thus, the main emitted X-ray signal is at the energy of the $\alpha$ peak of $\ce{Cs}$, which is $\SI{30.972}{\kilo\eV}$ \cite{Ba-source}.
+
+The diffraction measurement is done on a rotatable stage, where also a monochromator is introduced between the sample and the detector.
+
+\subsection{Energy scaling}
+\label{sec:E_scaling}
+As the output of the multichannelanalyzer (MCA) is counts per bin, but one wants to refer the wavelegth and thus an energy out of the channel, 
+spectral measurements for several samples are done.
+The characteristic spectral peak of the sample is found, so that tuples of bin number and energy can be found.
+By a linear regression a function $E (\text{b})$  of the bin $b$ can be found.
