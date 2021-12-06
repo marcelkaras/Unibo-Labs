@@ -60,7 +60,7 @@ ax.plot(a_1, i_1, 'k-', label='Datapoints')
 ax.plot(aa_1, gaussian(aa_1, *params_1), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\text{bin} $') # \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{counts}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -109,7 +109,7 @@ ax.plot(a_2, i_2, 'k-', label='Datapoints')
 ax.plot(aa_2, gaussian(aa_2, *params_2), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\text{bin} $') # \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{counts}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -157,7 +157,7 @@ ax.plot(a_3, i_3, 'k-', label='Datapoints')
 ax.plot(aa_3, gaussian(aa_3, *params_3), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\text{bin} $') # \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{counts}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -205,7 +205,7 @@ ax.plot(a_4, i_4, 'k-', label='Datapoints')
 ax.plot(aa_4, gaussian(aa_4, *params_4), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\text{bin} $') # \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{counts}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -253,7 +253,7 @@ ax.plot(a_5, i_5, 'k-', label='Datapoints')
 ax.plot(aa_5, gaussian(aa_5, *params_5), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\text{bin} $') # \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{counts}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -276,7 +276,7 @@ bins_n=([peak_pos_1.n,peak_pos_2.n,peak_pos_3.n,peak_pos_4.n,peak_pos_5.n])
 #bins_s=[peak_pos_1.s,peak_pos_2.s,peak_pos_3.s,peak_pos_4.s,peak_pos_5.s]
 #bins=unp.uarray(bins_n,bins_s)
 #bins=unp.uarray([peak_pos_1,peak_pos_2,peak_pos_3,peak_pos_4,peak_pos_5])
-energies=np.array([30.972,9.886,6.407,6.048,22.163])
+energies=np.array([30.972,9.886,6.407,8.06,22.163])
 
 #linear fit
 params_scale, cov_scale = curve_fit(linear,bins_n,energies,p0=[1,0])
@@ -321,10 +321,10 @@ ax.plot(a_B, i_B, 'k-', label='Datapoints')
 #ax.plot(aa_B, gaussian(aa_B, *params_B), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\text{E} \:/\: \si{\kilo\eV}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{counts}$')
-plt.axvline(x=7.45,label='Ni')
-plt.axvline(x=8.06,label='Cu')
+plt.axvline(x=7.45,label='Ni',c='b')
+plt.axvline(x=8.06,label='Cu',c='r')
 
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen

@@ -52,7 +52,7 @@ ax.plot(a_G, i_G, 'k-', label='Datapoints')
 ax.plot(aa_G, gaussian(aa_G, *paramsG), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -104,7 +104,7 @@ ax.plot(a_R, i_R, 'k-', label='Datapoints')
 ax.plot(aa_R, gaussian(aa_R, *paramsR), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -155,7 +155,7 @@ ax.plot(a_UV, i_UV, 'k-', label='Datapoints')
 ax.plot(aa_UV, gaussian(aa_UV, *paramsUV), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -214,7 +214,7 @@ ax.plot(a_A_D, i_A_D, 'k-', label='Datapoints')
 ax.plot(aa_A_D, gaussian(aa_A_D, *paramsA_D), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -272,7 +272,7 @@ ax.plot(a_B_D, i_B_D, 'k-', label='Datapoints')
 ax.plot(aa_B_D, gaussian(aa_B_D, *paramsB_D), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -328,7 +328,7 @@ ax.plot(a_C_D, i_C_D, 'k-', label='Datapoints')
 ax.plot(aa_C_D, gaussian(aa_C_D, *paramsC_D), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $C(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -446,7 +446,7 @@ ax.plot(a_A_D, i_A_D, 'k-', label='Datapoints')
 ax.plot(aa_A_D, gaussian(aa_A_D, *paramsA_D), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -504,7 +504,7 @@ ax.plot(a_B_D, i_B_D, 'k-', label='Datapoints')
 ax.plot(aa_B_D, gaussian(aa_B_D, *paramsB_D), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -560,7 +560,7 @@ ax.plot(a_C_D, i_C_D, 'k-', label='Datapoints')
 ax.plot(aa_C_D, gaussian(aa_C_D, *paramsC_D), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $C(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen
@@ -658,7 +658,7 @@ ax.plot(a_P, i_P, 'k-', label='Datapoints')
 ax.plot(aa_P, gaussian(aa_P, *paramsP), '-', color='#EC0000', label='Gaussian fit') #label=r'Fit $B(z) = az^4 + bz^3 + cz^2 + dz + e$')
 ax.set_xlabel(r'$\lambda \:/\: \si{\nano\meter}$')
 ax.set_ylabel(r'$\text{Intensity} \:/\: \text{a.u.}$')
-leg1 = ax.legend(loc='best', fancybox=False, fontsize='small', edgecolor='k')
+leg1 = ax.legend(loc='best', fancybox=False, prop={'size':16}, edgecolor='k')
 leg1.get_frame().set_linewidth(0.3)
 
 # Einstellung der Achsen

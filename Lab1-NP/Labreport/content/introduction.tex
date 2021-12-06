@@ -16,7 +16,7 @@ In the following, the samples, as well as the process of photoluminescense, are 
 \subsection{Photoluminescense in Semiconductors}
 \label{sec:PLS}
 
-Semiconductors are characterized by a bandgap of $\SI{2}{\eV}$ to $\SI{4}{\eV}$, an almost completely filled valence band and an almost completally empty conductance band \cite[391]{festkorperphysik}.
+Semiconductors are characterized by a bandgap of $\SI{2}{\eV}$ to $\SI{4}{\eV}$, an almost completely filled valence band and an almost completely empty conductance band \cite[391]{festkorperphysik}.
 Here, a lightsourse like a LED or Laser is able to excite some electrons from the valence band up into the conductance band, as long as the photoenergy is bigger then the bandgap of the sample.
 The electrons loose energy by exciting lattice vibrations, and by reaching the minimum of the conductance band, they may recombine with a hole in the valence band, emmitting a photon with the energy of the band gap.
 Here, the equation
@@ -25,7 +25,7 @@ Here, the equation
 \end{equation}\label{eq:h}
 holds, where $\nu$ is the photons frequency, and $E_\text{g}$ the band gap.
 One easily can see, that the expected frequency of the emitted photons is smaller than the frequency of the pump. 
-Nevertheless, due to thermal affects a thermal spread along the energy of the bandgap, and thus a widening of the spectrum around a $\lambda_\text{peak}$ is expected.
+Nevertheless, due to thermal effects a thermal spread along the energy of the bandgap, and thus a widening of the spectrum around a $\lambda_\text{peak}$ is expected.
 Using a spectrometer, this wavelengh can be found, and used to estimate the bandgap energy
 \begin{equation}
     E_{\text{g}} = \frac{h\c}{\lambda_\text{peak}}.
@@ -85,10 +85,27 @@ for the first confined state one gets
 \subsection{Experimental setup}
 \label{sec:setup}
 
-As lightscources there are used a UV 395 LED as well as a 375nm LDH laser Diode.
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.75\textwidth]{graphics/setup.png}
+    \caption[width=0.8\textwidth]{Schematic setup of the experiment using a LED as the lightsource. Alternatively, a Laser could be used\cite{instruction}.}
+    \label{fig:setup}
+  \end{figure*}
+
+The experimental setup of the experiment is schematically depicted in figure \ref{fig:setup}, where the LED lightsource can be subsedized by a Laser for the second part of the experiment.
+In detail, the used components are 
+\begin{itemize}
+    \item UV 295 LED with variable power supply
+    \item Picoquant Laser Diode LDH-I-375mm
+    \item 1m fiber optics SMA-MMF $\SI{200}{\micro\meter}$
+    \item Thorlabs CCS200 Spectrometer
+    \item TCD1304DG Toshiba CCD linear image sensor
+    \item Thorlabs OSA software data aquisition
+\end{itemize}
+
 The Thorlabs CCS200 Spectrometer is connected with a fiber optic which can be positioned next to the sample. 
 In order to minimalize the noise of the exciting light source, a perpendicular positioning to it is used.
-The Spectrometer uses a grating in order to project one wavelength onto a CCD linear image sensor.
+The spectrometer uses a grating in order to project one wavelength onto a CCD linear image sensor.
 The wavelength intensity scan can be acquired by moving a mirror. This happens automatically, such that a wavelength-intensity plot is available in the acquisition software.
 
 As there is expected to have noise from external light sources during the experiment, a background measurement for the LED setup is needed.
