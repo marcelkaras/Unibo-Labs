@@ -24,4 +24,47 @@ But we know, that the reduced resistance is equal to the reduced resistivty.
 
 Comparing the slope, which is the temperature coefficient $\beta$ \ref{equ:results-beta}, one can see it is bigger for copper compared with nickel, which fits to the data of Wiser \cite{resistivity}.
 For low temperatures, also the semiconductor sample of germanium can be fitted lineary, resulting in a temperature coefficient in the same scale \ref{equ:results-beta}.
+This behaviour can be explained by the Drude model with a constant density of nearly free charge carriers, which are in the case of the semiconductor germanium the electrons from the extrinsic region.
 
+In doped semiconductors as in the N-doped germanium sample the carriers come from thermally generated, intrinsic electron-hole pairs and extrinsic carriers due to the dopant.
+As seen above, the extrinsic carriers density is temperature independant.
+Thus, the resistance depends on the temperature dependent carrier`s mobility $\mu$.
+Taking into account these both effects, the resistance $R$ is proportional to $T^\alpha$, with a typical value of $\alpha = 1.5$ for germanium.
+By a linear regression in a double logarithmic plot this value could be found very precisely \ref{equ:alpha} with a error of
+\begin{equation}
+    \Delta \alpha = \frac{\alpha_\text{lit}-\alpha_\text{exp}}{\alpha_\text{lit}} = \SI{0.1 \pm 0.3}{\percent}.
+\end{equation}
+
+Further, the intrinsic carriers depend exponentially on the temperature, what could been shown for high temperature, where the amount of intrinsic carriers is much higher then the one of extrinsic carriers.
+The resulting calculated bandgap of germanium \ref{eq:bandgap-exp} can be compared with the literature banggap of undoped germanium, which is $\SI{0.67}{\eV}$ \cite{bandgap-Ge}.
+The resulting discrepancy is
+\begin{equation}
+    \Delta E_g = \frac{E_\text{lit}-E_\text{exp}}{E_\text{lit}} = \SI{24.5 \pm 0.8}{\percent}.
+\end{equation}
+
+Now, the low and also the high temperature regime have been analyzed sufficcently. 
+For the gap between, the transition phase, there is an overlap of both models thus an analysis is not easy to do.
+Generally, one can say that the transition temperature depends on the dopant concentration, where it shifts to higher temperatures for higher concentration.
+
+\subsection{Resistivity of wires}
+\label{sec:wires-disc}
+
+The resistivity parameter could be fitted by using pairs of wire length and resistance measurement.
+Firstly, one can assume that the 4-wire measurent is better as the measure error of wire resistance could be overcome.
+Therefore, the discrepancy between both results can be calculated.
+The results are displayed in table \ref{tab:wires} and the relative error is generally very big (procentual deviation $>\SI{31}{\percent}$)which shows the importance of using the more precise, 4-wire measurement technique.
+By camparing the resistivity with values from the literature, an resonable estimate for the samples material can be done.
+For the chosen materials 
+\begin{align*}
+    A -& \text{none} &\\
+    B -& \text{magnese} &-\rho=\SI{144e-8}{\ohm\meter}  \\
+    C -& \text{lead} &- \rho=\SI{22e-8}{\ohm\meter} \\
+    D -& \text{copper} &- \rho=\SI{1.68e-8}{\ohm\meter}  \\
+\end{align*}\cite{lead}\cite{copper}
+another procentual calculation gives the error of
+\begin{align*}
+    \Delta \rho_\text{B-Mg} &= \SI{17 \pm 4}{\percent} \\
+    \Delta \rho_\text{C-Pb} &= \SI{10 \pm 22}{\percent} \\
+    \Delta \rho_\text{D-Co} &= \SI{174 \pm 12}{\percent} .\\
+\end{align*}
+For the sample A the fitting was unsufficient as on the one side there is no metal with a comparable resisitvity and on the other side one can see a wide spread of the measurement point, and so a high standard derivation of the estimated resisitvity.
